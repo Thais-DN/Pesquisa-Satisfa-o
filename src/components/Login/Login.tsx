@@ -3,8 +3,10 @@ import React, { useState } from "react";
 import Head from "next/head";
 import { ImageIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export const Login = () => {
+    const router = useRouter();
     const [githubImage, setGithubImage] = useState<null | string>(null);
     const [githubUsername, setGithubUsername] = useState("");
     const [name, setName] = useState("");
@@ -40,13 +42,7 @@ export const Login = () => {
             return;
         }
 
-        // Aqui você pode adicionar a lógica para "migrar a tela" ou tratar os dados de entrada
-        console.log("Formulário enviado com sucesso:", {
-            githubUsername,
-            name,
-            email,
-        });
-        // Por exemplo, redirecionar o usuário ou limpar os campos
+        router.push("/pesquisa/");
     };
 
     return (
