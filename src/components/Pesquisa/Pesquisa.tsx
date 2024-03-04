@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { DataQuestion } from "@/data";
 import { UserInfo } from "@/app/pesquisa/page";
 import * as Progress from "@radix-ui/react-progress";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 interface PesquisaProps {
     questions: DataQuestion[];
