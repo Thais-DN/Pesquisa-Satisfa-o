@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* globals.css */
+.body-bg {
+    background-image: url("/assents/endless-constellation.svg");
+    background-size: cover;
+    background-position: center;
+}

@@ -42,6 +42,9 @@ export const Login = () => {
             return;
         }
 
+        const userInfo = { githubUsername, name, email, githubImage };
+        localStorage.setItem("userInfo", JSON.stringify(userInfo));
+
         router.push("/pesquisa/");
     };
 
@@ -50,7 +53,7 @@ export const Login = () => {
             <Head>
                 <title>Login</title>
             </Head>
-            <div className="bg-[url('/assents/endless-constellation.svg')] flex items-center justify-center min-h-screen bg-violet-600">
+            <div className="flex items-center justify-center min-h-screen">
                 <form
                     onSubmit={handleSubmit}
                     className="bg-white bg-opacity-10 p-8 rounded-xl shadow-xl backdrop-blur-md border-none"
@@ -131,7 +134,7 @@ export const Login = () => {
                     <div className="flex items-center justify-between mb-4"></div>
                     <button
                         type="submit"
-                        className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
+                        className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
                     >
                         Iniciar
                     </button>
