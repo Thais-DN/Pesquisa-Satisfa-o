@@ -143,7 +143,7 @@ export const DATA_QUESTIONS: DataQuestion[] = [
         id: 5,
         type: "number",
         question:
-            "O quão provável você é de recomendar nossos serviços a um amigo ou colega?",
+            "O quanto você recomendaria nossos serviços a um amigo ou colega?",
         options: [
             {
                 id: 1,

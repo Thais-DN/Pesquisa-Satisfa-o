@@ -5,15 +5,25 @@ import zoomPlugin from "chartjs-plugin-zoom";
 // Registra o plugin de zoom e todos os elementos necessários do Chart.js
 Chart.register(...registerables, zoomPlugin);
 
-export function GraficoLine() {
+interface GraficoLineProps {
+    medias: { [pergunta: string]: number };
+}
+
+export function GraficoLine({ medias }: GraficoLineProps) {
     Chart.register(...registerables, zoomPlugin);
 
     const timeSeriesData = {
-        labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho"],
+        labels: [
+            "pergunta 01",
+            "pergunta 02",
+            "pergunta 03",
+            "pergunta 04",
+            "pergunta 05",
+        ],
         datasets: [
             {
                 label: "Vendas 2024 (em milhares)",
-                data: [12, 19, 3, 5, 2, 3],
+                data: Object.values(medias),
                 fill: false,
                 borderColor: "rgb(114, 87, 153)",
                 tension: 0.1,

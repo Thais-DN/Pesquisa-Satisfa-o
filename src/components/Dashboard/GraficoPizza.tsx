@@ -1,21 +1,36 @@
 import "chart.js/auto";
 import { Pie } from "react-chartjs-2";
 
-export function GraficoPizza() {
+interface GraficoPizzaProps {
+    medias: { [pergunta: string]: number };
+    mediaGeral: number;
+}
+
+export function GraficoPizza({ medias }: GraficoPizzaProps) {
     const pieData = {
-        labels: ["Produto A", "Produto B", "Produto C"],
+        labels: [
+            "pergunta 01",
+            "pergunta 02",
+            "pergunta 03",
+            "pergunta 04",
+            "pergunta 05",
+        ],
         datasets: [
             {
-                data: [300, 50, 100],
+                data: Object.values(medias),
                 backgroundColor: [
                     "rgba(114, 87, 153, 1)",
                     "rgba(255, 151, 75, 1)",
                     "rgba(175, 223, 91, 1)",
+                    "rgba(237, 83, 103, 1)",
+                    "rgba(51, 185, 196, 1)",
                 ],
                 borderColor: [
                     "rgba(114, 87, 153, 1)",
                     "rgba(255, 151, 75, 1)",
                     "rgba(175, 223, 91, 1)",
+                    "rgba(237, 83, 103, 1)",
+                    "rgba(51, 185, 196, 1)",
                 ],
                 borderWidth: 1,
             },
