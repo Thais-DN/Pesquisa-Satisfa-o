@@ -1,3 +1,5 @@
+"use client";
+
 import { DadosDoUsuario } from "./Dashboard";
 
 // TabelaProps ajustado para aceitar a lista de todos os usuários (fictícios e do local storage)
@@ -9,8 +11,8 @@ interface TabelaProps {
 // Componente Tabela ajustado para usar os dados fornecidos e exibir a média de respostas por usuário
 export function Tabela({ dados, mediasPorUsuario }: TabelaProps) {
     return (
-        <div className="overflow-x-auto mt-8">
-            <table className="table-auto w-full text-black">
+        <div className="overflow-x-auto mt-8 rounded-lg">
+            <table className="table-auto w-full text-black text-lg lg:text-xl">
                 <thead>
                     <tr className="bg-white bg-opacity-80 text-black-700">
                         <th className="border border-violet-300 px-12 py-4">

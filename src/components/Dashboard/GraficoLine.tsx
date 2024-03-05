@@ -1,3 +1,5 @@
+"use client";
+
 import { Line } from "react-chartjs-2";
 import { Chart, registerables } from "chart.js";
 import zoomPlugin from "chartjs-plugin-zoom";

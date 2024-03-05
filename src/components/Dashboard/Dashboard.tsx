@@ -233,10 +233,10 @@ export function Dashboard() {
 
     return (
         <div className="p-8">
-            <h1 className="text-2xl font-bold mb-8 text-white">
+            <h1 className="text-2xl lg:text-3xl font-bold mb-8 text-white">
                 Resultados - 2024
             </h1>
-            <div className="grid grid-cols-3 gap-4 overflow-x-auto mb-8">
+            <div className="grid grid-cols-3 gap-4 overflow-x-auto mb-8 lg:text-xl">
                 {Object.entries(medias.mediasPorPergunta).map(
                     ([perguntaId, media], index) => (
                         <div
@@ -244,7 +244,6 @@ export function Dashboard() {
                             className="bg-white bg-opacity-60 rounded-lg text-center py-2 px-3"
                         >
                             <div>{`Pergunta ${perguntaId}`}</div>
-                            {/* Garanta que 'media' é tratada como número para usar '.toFixed' */}
                             <div>{`${media.toFixed(1)}%`}</div>
                         </div>
                     )
@@ -254,12 +253,14 @@ export function Dashboard() {
                     <div>{`${medias.mediaGeral.toFixed(1)}%`}</div>
                 </div>
             </div>
-            <div className="space-y-8 lg:flex lg:justify-between">
-                <GraficoNormal
-                    medias={medias.mediasPorPergunta}
-                    mediaGeral={medias.mediaGeral}
-                />
-                <GraficoLine medias={medias.mediasPorPergunta} />
+            <div className="space-y-8 lg:space-y-0 lg:space-x-8 lg:flex">
+                <div className="lg:w-1/2 space-y-8 lg:flex-col">
+                    <GraficoNormal
+                        medias={medias.mediasPorPergunta}
+                        mediaGeral={medias.mediaGeral}
+                    />
+                    <GraficoLine medias={medias.mediasPorPergunta} />
+                </div>
                 <GraficoPizza
                     medias={medias.mediasPorPergunta}
                     mediaGeral={medias.mediaGeral}

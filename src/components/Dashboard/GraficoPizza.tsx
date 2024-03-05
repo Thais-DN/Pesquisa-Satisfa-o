@@ -1,3 +1,5 @@
+"use client";
+
 import "chart.js/auto";
 import { Pie } from "react-chartjs-2";
 
@@ -38,7 +40,7 @@ export function GraficoPizza({ medias }: GraficoPizzaProps) {
     };
 
     return (
-        <div className="bg-white bg-opacity-80 rounded-lg p-4">
+        <div className="lg:flex-1 bg-white bg-opacity-80 rounded-lg p-4 lg:w-1/3">
             <Pie data={pieData} />
         </div>
     );
