@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Head from "next/head";
 import { ImageIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 
 export const Login = () => {
     const router = useRouter();
