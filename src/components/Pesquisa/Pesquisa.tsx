@@ -119,7 +119,7 @@ export function Pesquisa({ questions, user }: PesquisaProps) {
 
     return (
         <div className="flex justify-center items-center h-screen">
-            <div className="text-center p-10 bg-white bg-opacity-50 rounded-lg shadow-xl flex flex-col h-1/2 w-4/5">
+            <div className="mx-4 text-center p-10 bg-white bg-opacity-50 rounded-lg shadow-xl flex flex-col h-1/2 lg:w-2/4">
                 <div className="flex justify-between items-center mb-4">
                     <span className="text-2xl">
                         {question.id}. {question.question}
