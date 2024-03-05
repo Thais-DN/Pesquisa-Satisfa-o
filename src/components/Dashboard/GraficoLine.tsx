@@ -22,7 +22,7 @@ export function GraficoLine({ medias }: GraficoLineProps) {
         ],
         datasets: [
             {
-                label: "Vendas 2024 (em milhares)",
+                label: "Satisfação do usuario",
                 data: Object.values(medias),
                 fill: false,
                 borderColor: "rgb(114, 87, 153)",

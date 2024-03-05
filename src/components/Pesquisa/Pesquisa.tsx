@@ -11,34 +11,70 @@ interface PesquisaProps {
     user: UserInfo;
 }
 
+// Função para formatar a data atual no formato dd/mm/aaaa
+const formatDate = (date: Date): string => {
+    const day = date.getDate().toString().padStart(2, "0");
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+};
+
 export function Pesquisa({ questions, user }: PesquisaProps) {
     const [currentQuestion, setCurrentQuestion] = useState<number>(0);
-    const [answers, setAnswers] = useState<{ [key: number]: string }>({});
+    const [surveyData, setSurveyData] = useState<{
+        answers: { [key: number]: string };
+        userInfo: UserInfo | null;
+        date: string;
+    }>({
+        answers: {},
+        userInfo: null,
+        date: formatDate(new Date()), // Inicializa com a data atual formatada
+    });
     const [surveyComplete, setSurveyComplete] = useState<boolean>(false);
     const router = useRouter();
 
-    // Carrega as respostas salvas ao carregar o componente
     useEffect(() => {
-        const savedAnswers = localStorage.getItem("userAnswers");
-        if (savedAnswers) {
-            setAnswers(JSON.parse(savedAnswers));
+        const savedData = localStorage.getItem("surveyData");
+        if (savedData) {
+            const parsedData = JSON.parse(savedData);
+            setSurveyData({
+                ...parsedData,
+                date: parsedData.date
+                    ? parsedData.date
+                    : formatDate(new Date()), // Usa a data salva ou a data atual, se não estiver disponível
+            });
+        } else {
+            // Inicializa com as informações do usuário e a data atual se não houver dados salvos
+            setSurveyData((prev) => ({
+                ...prev,
+                userInfo: user,
+                date: formatDate(new Date()), // Atualiza para usar a função de formatação
+            }));
         }
-    }, []);
+    }, [user]);
 
     const handleAnswerChange = (
         event: React.ChangeEvent<HTMLInputElement>,
         questionId: number
     ) => {
-        const newAnswers = { ...answers, [questionId]: event.target.value };
-        setAnswers(newAnswers);
-        localStorage.setItem("userAnswers", JSON.stringify(newAnswers));
+        const newAnswers = {
+            ...surveyData.answers,
+            [questionId]: event.target.value,
+        };
+        const newData = {
+            ...surveyData,
+            answers: newAnswers,
+            date: formatDate(new Date()),
+        }; // Atualiza a data sempre que as respostas mudam
+        setSurveyData(newData);
+        localStorage.setItem("surveyData", JSON.stringify(newData));
     };
 
     const handleNext = () => {
         const questionId = questions[currentQuestion].id; // Obtenha o ID da pergunta atual
 
-        // Verifica se uma resposta foi selecionada para a pergunta atual
-        if (answers[questionId] === undefined) {
+        // Aqui, usamos `surveyData.answers` para acessar `answers` corretamente
+        if (surveyData.answers[questionId] === undefined) {
             alert("Por favor, selecione uma opção antes de continuar.");
             return;
         }
@@ -94,7 +130,7 @@ export function Pesquisa({ questions, user }: PesquisaProps) {
                     {question.type === "text" ? (
                         <input
                             type="text"
-                            value={answers[question.id] || ""}
+                            value={surveyData.answers[question.id] || ""}
                             onChange={(e) => handleAnswerChange(e, question.id)}
                             className="text-center"
                         />
@@ -110,7 +146,7 @@ export function Pesquisa({ questions, user }: PesquisaProps) {
                                         name={`question_${question.id}`}
                                         value={answer.value}
                                         checked={
-                                            answers[question.id] ===
+                                            surveyData.answers[question.id] ===
                                             answer.value
                                         }
                                         onChange={(e) =>

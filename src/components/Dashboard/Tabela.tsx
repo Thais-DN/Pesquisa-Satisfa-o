@@ -1,36 +1,18 @@
-export function Tabela() {
-    const dadosTabela = [
-        {
-            nome: "Thais",
-            data: "04/03/2024",
-            satisfacao: "80%",
-            processo: "Andamento",
-        },
-        {
-            nome: "Ynhago",
-            data: "02/03/2024",
-            satisfacao: "70%",
-            processo: "Finalizado",
-        },
-        {
-            nome: "Maggie",
-            data: "01/03/2024",
-            satisfacao: "30%",
-            processo: "Finalizado",
-        },
-        {
-            nome: "Sapato",
-            data: "01/03/2024",
-            satisfacao: "70%",
-            processo: "Finalizado",
-        },
-    ];
+import { DadosDoUsuario } from "./Dashboard";
 
+// TabelaProps ajustado para aceitar a lista de todos os usuários (fictícios e do local storage)
+interface TabelaProps {
+    dados: DadosDoUsuario[]; // Lista completa de usuários
+    mediasPorUsuario: { [userId: string]: string }; // Médias por usuário
+}
+
+// Componente Tabela ajustado para usar os dados fornecidos e exibir a média de respostas por usuário
+export function Tabela({ dados, mediasPorUsuario }: TabelaProps) {
     return (
         <div className="overflow-x-auto mt-8">
-            <table className="table-auto w-full text-white">
+            <table className="table-auto w-full text-black">
                 <thead>
-                    <tr className="bg-white bg-opacity-80 text-violet-700">
+                    <tr className="bg-white bg-opacity-80 text-black-700">
                         <th className="border border-violet-300 px-12 py-4">
                             Nome
                         </th>
@@ -45,20 +27,20 @@ export function Tabela() {
                         </th>
                     </tr>
                 </thead>
-                <tbody className="bg-white bg-opacity-40">
-                    {dadosTabela.map((item, index) => (
+                <tbody className="bg-white bg-opacity-60">
+                    {dados.map((usuario, index) => (
                         <tr key={index}>
                             <td className="border border-violet-300 px-4 py-2">
-                                {item.nome}
+                                {usuario.userId}
                             </td>
                             <td className="border border-violet-300 px-4 py-2">
-                                {item.data}
+                                {usuario.data}
                             </td>
                             <td className="border border-violet-300 px-4 py-2">
-                                {item.satisfacao}
+                                {mediasPorUsuario[usuario.userId]}%
                             </td>
                             <td className="border border-violet-300 px-4 py-2">
-                                {item.processo}
+                                {usuario.processo}
                             </td>
                         </tr>
                     ))}
