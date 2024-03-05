@@ -8,7 +8,7 @@ interface GraficoPizzaProps {
     mediaGeral: number;
 }
 
-export function GraficoPizza({ medias }: GraficoPizzaProps) {
+export default function GraficoPizza({ medias }: GraficoPizzaProps) {
     const pieData = {
         labels: [
             "pergunta 01",

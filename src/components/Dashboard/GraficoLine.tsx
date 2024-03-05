@@ -11,7 +11,7 @@ interface GraficoLineProps {
     medias: { [pergunta: string]: number };
 }
 
-export function GraficoLine({ medias }: GraficoLineProps) {
+export default function GraficoLine({ medias }: GraficoLineProps) {
     Chart.register(...registerables, zoomPlugin);
 
     const timeSeriesData = {

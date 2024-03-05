@@ -8,7 +8,7 @@ interface GraficoNormalProps {
     mediaGeral: number;
 }
 
-export function GraficoNormal({ medias }: GraficoNormalProps) {
+export default function GraficoNormal({ medias }: GraficoNormalProps) {
     const data = {
         labels: [
             "pergunta 01",
