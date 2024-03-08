@@ -15,6 +15,6 @@ Este é um projeto de pesquisa de satisfação do usuario, acompanhado de tela d
 -   **Dashboard**: Tela final, o dashboard para controlar a media das respostas e ter acesso do que precisa melhorar.
 -   **Design Responsivo**: A interface se adapta para proporcionar uma experiência de usuário consistente em dispositivos móveis e desktops.
 
-![Preview do Projeto](public/assents/exemplo.png.png)
+![Preview do Projeto](public/assents/exemplo.png)
 
 ## [Confira aqui no link a Pesquisa de satisfação](https://pesquisa-satisfacao-cyan.vercel.app/)
